@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
   root 'users#index'
 
-  get 'users/index'
-  get 'users/show'
-  get 'users/update'
-  get 'users/edit'
-
   devise_for :users, skip: :all
   devise_scope :user do
     get 'login' => 'devise/sessions#new', as: :new_user_session
@@ -27,5 +22,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users, only: %i[index show update edit]
 end

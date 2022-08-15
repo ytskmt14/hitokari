@@ -1,2 +1,41 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1 class="text-xl font-semibold">マイギルドカード</h1>
+
+<div class="mt-8 grid grid-rows-4 grid-cols-3 gap-4">
+  <div class="row-span-4">
+    <!-- TODO: プロフィールに画像設定できるようにする -->
+    <%= image_tag 'https://placehold.jp/300x300.png' %>
+  </div>
+  <!-- ニックネーム（表示名）-->
+  <div class="row-span-1 col-span-1">
+    <div class="text-xs text-gray-400 font-black">ニックネーム</div>
+    <div class="divider my-0 py-0"></div>
+    <div><%= @user.profile.nickname || '未設定' %></div>
+  </div>
+  <!-- ランク -->
+  <div class="row-span-1 col-span-1">
+    <div class="text-xs text-gray-400 font-black">ランク</div>
+    <div class="divider my-0 py-0"></div>
+    <div><%= @user.profile.rank&.name %></div>
+  </div>
+  <!-- 自己紹介 -->
+  <div class="row-span-1 col-span-2">
+    <div class="text-xs text-gray-400 font-black">ひとこと</div>
+    <div class="divider my-0 py-0"></div>
+    <div><%= @user.profile.comment || '未設定' %></div>
+  </div>
+  <!-- スキルセット -->
+  <!-- TODO: プロフィールにスキルセットを設定できるようにする -->
+  <div class="row-span-1 col-span-2">
+    <div class="text-xs text-gray-400 font-black">スキルセット</div>
+    <div class="divider my-0 py-0"></div>
+    <div>skill set</div>
+  </div>
+  <!-- 実績 -->
+  <!-- TODO: プロフィールに実績を設定できるようにする -->
+  <!-- ユーザ設定ではなく、システム側で設定 -->
+  <div class="row-span-1 col-span-2">
+    <div class="text-xs text-gray-400 font-black">実績</div>
+    <div class="divider my-0 py-0"></div>
+    <div>achievement</div>
+  </div>
+</div>
