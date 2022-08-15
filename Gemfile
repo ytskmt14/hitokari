@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 gem "devise"
 gem "annotate"
 
+gem "heroicon"
+gem "rails_heroicon"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

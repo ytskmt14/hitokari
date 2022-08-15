@@ -31,6 +31,7 @@ class User < ApplicationRecord
          :trackable
 
   has_one :profile
+  accepts_nested_attributes_for :profile
 
   def full_name
     "#{last_name}　#{first_name}"

@@ -1,2 +1,80 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="flex flex-row">
+  <div class="text-xl font-semibold">
+    マイギルドカード
+  </div>
+</div>
+
+<%= form_with model: @user, data: { turbo_confirm: "更新します。\nよろしいですか？"} do |f| %>
+  <div class="mt-8 grid grid-rows-5 grid-cols-3 gap-4">
+    <div class="row-span-5">
+      <!-- TODO: プロフィールに画像設定できるようにする -->
+      <%= image_tag 'https://placehold.jp/300x300.png' %>
+    </div>
+    <!-- 名前-->
+    <div class="row-span-1 col-span-1">
+      <div class="text-xs text-gray-400 font-black">名前</div>
+      <div class="divider my-0 py-0"></div>
+      <div class="form-control">
+        <label class="input-group">
+          <%= f.text_field :last_name, class: "input input-bordered mr-4", size: 15 %>
+          <%= f.text_field :first_name, class: "input input-bordered", size: 15  %>
+        </label>
+      </div>
+    </div>
+    <!-- メールアドレス-->
+    <div class="row-span-1 col-span-1">
+      <div class="text-xs text-gray-400 font-black">メールアドレス</div>
+      <div class="divider my-0 py-0"></div>
+      <div class="form-control">
+        <label class="input-group">
+          <%= f.email_field :email, class: "input input-bordered", size: 35, autocomplete: "email" %>
+        </label>
+      </div>
+    </div>
+
+    <%= f.fields_for :profile do |ff| %>
+      <!-- ニックネーム（表示名）-->
+      <div class="row-span-1 col-span-1">
+        <div class="text-xs text-gray-400 font-black">ニックネーム</div>
+        <div class="divider my-0 py-0"></div>
+        <div class="form-control">
+          <label class="input-group">
+            <%= ff.text_field :nickname, class: "input input-bordered", size: 20%>
+          </label>
+        </div>
+      </div>
+      <!-- ランク -->
+      <div class="row-span-1 col-span-1">
+        <div class="text-xs text-gray-400 font-black">ランク</div>
+        <div class="divider my-0 py-0"></div>
+        <div><%= @user.profile.rank&.name %></div>
+      </div>
+      <!-- 自己紹介 -->
+      <div class="row-span-1 col-span-2">
+        <div class="text-xs text-gray-400 font-black">ひとこと</div>
+        <div class="divider my-0 py-0"></div>
+        <div class="form-control">
+          <label class="input-group">
+            <%= ff.text_area :comment, class: "input input-bordered", size: "100x5"%>
+          </label>
+        </div>
+      </div>
+      <!-- スキルセット -->
+      <!-- TODO: プロフィールにスキルセットを設定できるようにする -->
+      <div class="row-span-1 col-span-2">
+        <div class="text-xs text-gray-400 font-black">スキルセット</div>
+        <div class="divider my-0 py-0"></div>
+        <div>skill set</div>
+      </div>
+      <!-- 実績 -->
+      <!-- TODO: プロフィールに実績を設定できるようにする -->
+      <!-- ユーザ設定ではなく、システム側で設定 -->
+      <div class="row-span-1 col-span-2">
+        <div class="text-xs text-gray-400 font-black">実績</div>
+        <div class="divider my-0 py-0"></div>
+        <div>achievement</div>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit "更新", class: "btn btn-accent float-right" %>
+<% end %>

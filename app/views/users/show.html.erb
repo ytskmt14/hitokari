@@ -1,4 +1,21 @@
-<h1 class="text-xl font-semibold">マイギルドカード</h1>
+<% if flash[:info].present? %>
+  <div class="alert alert-success shadow-lg">
+    <div class="flex flex-row">
+      <div class="mx-0 px-0">
+        <%= heroicon "information-circle", options: { class: "w-5 h-5" } %>
+      </div>
+      <div class="mx-0 px-0"><%= flash[:info] %></div>
+    </div>
+  </div>
+<% end %>
+<div class="flex flex-row">
+  <div class="text-xl font-semibold">
+    マイギルドカード
+  </div>
+  <div class="mx-3 pt-1">
+    <%= link_to (heroicon "pencil", options: { class: "w-5 h-5" }), edit_user_path(@user.id) %>
+  </div>
+</div>
 
 <div class="mt-8 grid grid-rows-4 grid-cols-3 gap-4">
   <div class="row-span-4">
